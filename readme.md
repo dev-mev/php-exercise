@@ -21,7 +21,7 @@ Your tasks will mean writing code so that provided automated testing passes.
 Don't change the test files. When you send me your code I will use the unchanged 
 versions to test your implementations.
 
-However, feel free to read the tests and understand what they are checking for.
+However, you should read the tests and understand what they are checking for.
 Test are a great way to provide requirements and specification.
 
 
@@ -60,7 +60,7 @@ containing JSON data that would be returned from the UW web service.
 
 Imagine the in that file data is the result of a query against the web service asking:
 
-    What courses are offered in 2020 Autumn within the EDUC curriculum?
+> What courses are offered in 2020 Autumn within the EDUC curriculum?
 
 The web service response returns an array of results. Each array item is a JSON 
 object representing one Course Section that a student could register for. 
@@ -81,8 +81,8 @@ If Meetings occur at different times on different days, that must be represented
 as separate Meeting records. So if your class meet Monday 9 AM - 10:50 AM and 
 Wednesday 1:00 PM to 1:50 PM you need two meeting records.
 
-    Meeting 1: Days: [ Mon ], StartTime: 09:00, EndTime: 10:50
-    Meeting 2: Days: [ Wed ], StartTime: 13:00, EndTime: 13:50 
+    Meeting 1 = Days: [ Mon ], StartTime: 09:00, EndTime: 10:50
+    Meeting 2 = Days: [ Wed ], StartTime: 13:00, EndTime: 13:50 
 
 
 ### Instructors
@@ -157,7 +157,8 @@ multiple areas. So `areasFor()` must return an array.
 
 The standard way to process a string of JSON data in PHP is to use the standard
 PHP function `json_decode()` to convert the string into a structure of arrays 
-and objects (specifically PHP stdClass() objects).
+and objects, specifically PHP stdClass() objects. __You don't need to do this,
+this is just to help explain the input your method will receive.__
 
 `areasFor()` will get a stdClass argument (we are calling it `$section`) that
 will follow the data structure you find in `src/uw-course-section-service-mock.json`.
