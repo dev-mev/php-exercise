@@ -58,7 +58,7 @@ at University of Washington.
 In the "data" directory is a file `data/uw-course-section-service-mock.json` 
 containing JSON data that would be returned from the UW web service. 
 
-Imagine the in that file data is the result of a query against the web service asking:
+Imagine that file is the result of a query against the web service asking:
 
 > What courses are offered in 2020 Autumn within the EDUC curriculum?
 
@@ -78,7 +78,7 @@ Time and End Time and can happen multiple days per week. For example one Meeting
 could be Tuesdays and Thursdays 9 AM - 10:50 AM.
 
 If Meetings occur at different times on different days, that must be represented 
-as separate Meeting records. So if your class meet Monday 9 AM - 10:50 AM and 
+as separate Meeting records. So if your class meets Monday 9 AM - 10:50 AM and 
 Wednesday 1:00 PM to 1:50 PM you need two meeting records.
 
     Meeting 1 = Days: [ Mon ], StartTime: 09:00, EndTime: 10:50
@@ -110,8 +110,11 @@ It does not show up in the central course data available in the UW web service.
 In many cases we need to consume UW institutional data and combine it with local
 college records.
 
-In the "data" directory is a file `data/area-faculty.php`. It provides a roster 
-that puts faculty (identified by RegID into college areas). 
+This project includes a file `data/area-faculty.php`. That file provides a PHP
+array structure with:
+
+* Section for each Area. Area abbreviation is the top array key.
+* List of faculty RegIDs that belong to the given Area. 
 
 
 ## Exercises
@@ -125,9 +128,9 @@ This file contains a PHP class with one method to be implemented: `areaOf()`
 The `areaOf()` method should accept a string argument containing a RegID. 
 It should search through its configuration to figure out what area the faculty 
 with that RegID belongs to. It should return the string name (abbreviation) of 
-the college area.
+the college Area.
 
-Faculty are just associated with a single area, provided configuration will
+Faculty are just associated with a single Area, provided configuration will
 follow that rule.
 
 If the RegID does not show up in the configuration, `areaOf()` should return 
@@ -149,11 +152,11 @@ Next file to look at is `src/CourseSectionArea.php`.
 In this file your task is to implement the `areasFor()` method.
 
 The purpose of `areasFor()` is to take a Course Section record from the web 
-service data and figure out what College of Education areas are related to 
+service data and figure out what College of Education Areas are related to 
 it through the Instructors.
 
 Since a Course Section can have multiple Instructors, it can be related to 
-multiple areas. So `areasFor()` must return an array.
+multiple Areas. So `areasFor()` must return an array.
 
 The standard way to process a string of JSON data in PHP is to use the standard
 PHP function `json_decode()` to convert the string into a structure of arrays 
@@ -164,7 +167,7 @@ this is just to help explain the input your method will receive.__
 will follow the data structure you find in `src/uw-course-section-service-mock.json`.
 
 The `CourseSectionArea` class will also have an instance of `FacultyArea` that 
-you worked on in Task 1. You can use this to get areas based on Instructor's 
+you worked on in Task 1. You can use this to get Areas based on Instructor's 
 RegIDs.
 
 Your task is to implement the `areasFor()` method so that the provided automated 
