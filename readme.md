@@ -126,19 +126,20 @@ In the __src__ directory find the file __FacultyArea.php__.
 This file contains a PHP class with one method to be implemented: `areaOf()`
 
 The `areaOf()` method should accept a string argument containing a RegID. 
-It should search through its configuration to figure out what area the faculty 
+
+When the automated test are run this class will be instantiated with its 
+`$areaRoster` configuration. See the file `data/area-faculty.php` for an example 
+area roster.
+
+It should search through its `$areaRoster` and figure out what area the faculty 
 with that RegID belongs to. It should return the string name (abbreviation) of 
 the college Area.
 
-Faculty are just associated with a single Area, provided configuration will
+Faculty are just associated with a single Area, provided `$areaRoster` will
 follow that rule.
 
-If the RegID does not show up in the configuration, `areaOf()` should return 
+If the RegID does not show up in the `$areaRoster`, `areaOf()` should return 
 NULL.
-
-The configuration will be passed into the class. You can assume that the 
-configuration provided will be the contents of "data/area-faculty.php".
-(Or follow that structure.)
 
 Your task is to implement the method so that the provided automated tests pass.
 
