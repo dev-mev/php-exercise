@@ -35,8 +35,11 @@ class FacultyArea
      */
     public function areaOf($RegID)
     {
-
-        // @TODO implement this method
+        foreach ($this->areaRosters as $key => $value) {
+            if (in_array($RegID, $value)) {
+                return $key;
+            }
+        }
 
         return null;
     }

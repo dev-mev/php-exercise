@@ -31,7 +31,17 @@ class CourseSectionArea
     {
         $out = [];
 
-        // @TODO implement this method
+        foreach ($section->Meetings as $key => $value) {
+            foreach ($value->Instructors as $key => $value) {
+                $area = $this->facultyArea->areaOf($value->Person->RegID);
+
+                if ($area !== NULL && !in_array($area, $out)) {
+                    array_push($out, $area);
+                }
+            }
+        }
+
+        sort($out);
 
         return $out;
     }

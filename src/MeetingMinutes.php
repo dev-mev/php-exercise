@@ -40,8 +40,19 @@ class MeetingMinutes
      */
     private function countOneMeeting($meeting): int
     {
+        if (!empty($meeting->DaysOfWeek->Days) && !empty($meeting->StartTime) && !empty($meeting->EndTime)) {
+            $minutes = 0;
 
-        // @TODO implement this method
+            foreach ($meeting->DaysOfWeek->Days as $day) {
+                $start_time = explode(':', $meeting->StartTime);
+                $end_time = explode(':', $meeting->EndTime);
+
+                // multiply by 60 to change hours to minutes
+                $minutes += ($end_time[0] * 60 + $end_time[1]) - ($start_time[0] * 60 + $start_time[1]);
+            }
+
+            return $minutes;
+        }
 
         return 0;
     }
